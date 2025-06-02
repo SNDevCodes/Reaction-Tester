@@ -25,17 +25,17 @@ function moveBox() {
     box.style.display = "block";
     box.className = "container reaction-box flex-col ready";
 
-    // message.textContent = "🎯 Click the box as fast as you can!";
     startTime = new Date().getTime();
 }
 
 box.addEventListener("click", () => {
     const endTime = new Date().getTime();
-    const reactionTime = endTime - startTime;
+    const reactionTimeMs = endTime - startTime;
+    const reactionTimeSec = (reactionTimeMs / 1000).toFixed(3); // 3 decimal places
 
     box.style.display = "none";
     box.className = "container reaction-box flex-col idle";
-    alert(`✅ Your reaction time is ${reactionTime} ms.`);
+    alert(`✅ Your reaction time is ${reactionTimeSec} seconds.`);
 
     setTimeout(moveBox, 10);
 });
